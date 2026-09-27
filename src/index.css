@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #1f2421;
+  --ink-soft: #5c645d;
+  --paper: #f5f6f2;
+  --surface: #ffffff;
+  --border: #dde1d9;
+  --sage: #3f6c51;
+  --sage-light: #e7efe9;
+  --rust: #b5533c;
+  --rust-light: #f6e6e2;
+  --amber: #a37e2c;
+  --amber-light: #f2ecda;
+
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input, select {
+  font-family: var(--font-body);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+
+/* Header */
+.app-header {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.app-header h1 {
+  font-size: 2.2rem;
+  color: var(--sage);
+}
+
+.tagline {
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Task form */
+.task-form {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-form input[type="text"] {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 1rem;
+}
+
+.task-form select {
+  padding: 0.7rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.9rem;
+}
+
+.task-form button {
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--sage);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Toolbar: filters + stats */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.filter-bar button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+}
+
+.filter-bar button.active {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: #fff;
+  font-weight: 600;
+}
+
+.task-stats {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.task-stats .dot {
+  margin: 0 0.4rem;
+}
+
+/* Task list */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.empty-message {
+  color: var(--ink-soft);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+
+.task-item input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--sage);
+  flex-shrink: 0;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+  cursor: text;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--ink-soft);
+}
+
+.edit-input {
+  flex: 1;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--sage);
+  font-size: 0.95rem;
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge-work { background: var(--sage-light); color: var(--sage); }
+.badge-personal { background: var(--amber-light); color: var(--amber); }
+.badge-urgent { background: var(--rust-light); color: var(--rust); }
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  padding: 0.2rem 0.3rem;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  color: var(--ink);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .task-form { flex-wrap: wrap; }
+  .task-form input[type="text"] { flex-basis: 100%; }
+  .toolbar { flex-direction: column; align-items: flex-start; }
+}
